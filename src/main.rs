@@ -18,6 +18,14 @@
 // Each person gets 2 slices of pizza.
 // There are 0 leftover slices of pizza.
 
+// calculate_slices_per_person(n_people: 8, n_pizza: 2, n_slices: 8) -> (slice_per_person, leftovers)
+
+fn calculate_slices(n_people: i64, n_pizza: i64, n_slices: i64) -> (i64, i64) {
+    let total_slices: i64 = n_pizza * n_slices;
+    let slice_per_person: i64 = total_slices / n_people;
+    let leftover_slices: i64 = total_slices % n_people;
+    (slice_per_person, leftover_slices)
+}
 
 fn main() {
     println!("Hello, world!");
