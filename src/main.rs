@@ -41,7 +41,33 @@ mod tests {
     }
 }
 
+use std::io;
+use std::io::Write;
 
 fn main() {
-    println!("Hello, world!");
+
+    print!("How many people? ");
+    let mut n_people = String::new();
+    io::stdout().flush().unwrap();
+    io::stdin().read_line(&mut n_people).expect("Failed to read input");
+    let n_people: i64 = n_people.trim().parse().expect("Please enter a valid number");
+
+    print!("How many pizzas do you have? ");
+    let mut n_pizza = String::new();
+    io::stdout().flush().unwrap();
+    io::stdin().read_line(&mut n_pizza).expect("Failed to read input");
+    let n_pizza: i64 = n_pizza.trim().parse().expect("Please enter a valid number");
+
+    print!("How many slices per pizza? ");
+    let mut n_slices = String::new();
+    io::stdout().flush().unwrap();
+    io::stdin().read_line(&mut n_slices).expect("Failed to read input");
+    let n_slices: i64 = n_slices.trim().parse().expect("Please enter a valid number");
+
+    let (slice_per_person, leftover_slices) = calculate_slices(n_people, n_pizza, n_slices);
+
+    println!("{} people sharing {} pizzas with {} slices each.", n_people, n_pizza, n_slices);
+    println!("Each person gets {} {} of pizza.", slice_per_person, if slice_per_person > 1 { "slices" } else { "slice" } );
+    println!("There are {} leftover slices of pizza.", leftover_slices);
+
 }
