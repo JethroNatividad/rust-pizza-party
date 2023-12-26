@@ -27,6 +27,21 @@ fn calculate_slices(n_people: i64, n_pizza: i64, n_slices: i64) -> (i64, i64) {
     (slice_per_person, leftover_slices)
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_calculate_slices() {
+        assert_eq!(calculate_slices(8,2,8), (2,0));
+        assert_eq!(calculate_slices(7,3,8), (3,3));
+        assert_eq!(calculate_slices(10,4,6), (2,4));
+        assert_eq!(calculate_slices(12,3,6), (1,6));
+        assert_eq!(calculate_slices(9,5,8), (4,4));
+    }
+}
+
+
 fn main() {
     println!("Hello, world!");
 }
