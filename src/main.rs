@@ -45,7 +45,6 @@ use std::io;
 use std::io::Write;
 
 fn main() {
-
     print!("How many people? ");
     let mut n_people = String::new();
     io::stdout().flush().unwrap();
