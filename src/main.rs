@@ -60,23 +60,9 @@ fn get_input<T: std::str::FromStr>(prompt: &str) -> T {
 }
 
 fn main() {
-    print!("How many people? ");
-    let mut n_people = String::new();
-    io::stdout().flush().unwrap();
-    io::stdin().read_line(&mut n_people).expect("Failed to read input");
-    let n_people: i64 = n_people.trim().parse().expect("Please enter a valid number");
-
-    print!("How many pizzas do you have? ");
-    let mut n_pizza = String::new();
-    io::stdout().flush().unwrap();
-    io::stdin().read_line(&mut n_pizza).expect("Failed to read input");
-    let n_pizza: i64 = n_pizza.trim().parse().expect("Please enter a valid number");
-
-    print!("How many slices per pizza? ");
-    let mut n_slices = String::new();
-    io::stdout().flush().unwrap();
-    io::stdin().read_line(&mut n_slices).expect("Failed to read input");
-    let n_slices: i64 = n_slices.trim().parse().expect("Please enter a valid number");
+    let n_people: i64 = get_input("How many people? ");
+    let n_pizza: i64 = get_input("How many pizzas do you have? ");
+    let n_slices: i64 = get_input("How many slices per pizza? ");
 
     let (slice_per_person, leftover_slices) = calculate_slices(n_people, n_pizza, n_slices);
 
